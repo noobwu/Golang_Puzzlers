@@ -1,12 +1,12 @@
 package main
 
 import (
-	"flag"
+	"flag" //首先，Go 语言标准库中有一个代码包专门用于接收和解析命令参数。这个代码包的名字叫flag。
 	"fmt"
 )
 
 func main() {
-	var name = getTheFlag()
+	var name = getTheFlag() //类型推断
 	flag.Parse()
 	fmt.Printf("Hello, %v!\n", *name)
 }

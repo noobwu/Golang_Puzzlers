@@ -10,7 +10,20 @@ func main() {
 	container := map[int]string{0: "zero", 1: "one", 2: "two"}
 
 	// 方式1。
-	_, ok1 := interface{}(container).([]string)
+	/*
+		正式说明一下，类型断言表达式的语法形式是x.(T)。其中的x代表要被判断类型的值。这个值当下的类型必须是接口类型的，不过具体是哪个接口类型其实是无所谓的。
+
+		这里有一条赋值语句。在赋值符号的右边，是一个类型断言表达式。
+
+		它包括了用来把container变量的值转换为空接口值的interface{}(container)。
+
+		以及一个用于判断前者的类型是否为切片类型 []string 的 .([]string)。
+
+		这个表达式的结果可以被赋给两个变量，在这里由_和ok1代表。变量ok1是布尔（bool）类型的，它将代表类型判断的结果，true或false。
+
+		如果是true，那么被判断的值将会被自动转换为[]string类型的值，并赋给变量value，否则value将被赋予nil（即“空”）。
+	*/
+	_, ok1 := interface{}(container).([]string) //类型断言表达式
 	_, ok2 := interface{}(container).(map[int]string)
 	if !(ok1 || ok2) {
 		fmt.Printf("Error: unsupported container type: %T\n", container)

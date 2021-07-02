@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-var block = "package"
+var block = "package" //全域代码块
 
 func main() {
 	block := "function"
