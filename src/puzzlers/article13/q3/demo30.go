@@ -16,6 +16,7 @@ func New(name, scientificName, category string) Cat {
 	}
 }
 
+//Cat左边再加个*代表的就是Cat类型的指针类型
 func (cat *Cat) SetName(name string) {
 	cat.name = name
 }
@@ -43,6 +44,8 @@ func (cat Cat) String() string {
 
 func main() {
 	cat := New("little pig", "American Shorthair", "cat")
+	fmt.Printf("The cat: %s\n", cat)
+
 	cat.SetName("monster") // (&cat).SetName("monster")
 	fmt.Printf("The cat: %s\n", cat)
 
@@ -58,6 +61,7 @@ func main() {
 
 	_, ok := interface{}(cat).(Pet)
 	fmt.Printf("Cat implements interface Pet: %v\n", ok)
+
 	_, ok = interface{}(&cat).(Pet)
 	fmt.Printf("*Cat implements interface Pet: %v\n", ok)
 }

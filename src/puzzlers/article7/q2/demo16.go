@@ -32,4 +32,15 @@ func main() {
 	fmt.Printf("s8b: len: %d, cap: %d\n", len(s8b), cap(s8b))
 	s8c := append(s8b, make([]int, 45)...)
 	fmt.Printf("s8c: len: %d, cap: %d\n", len(s8c), cap(s8c))
+	fmt.Println()
+
+	// 示例1。
+	s9 := make([]byte, 0)
+	fmt.Printf("The capacity of s9: %d\n", cap(s9))
+	for j := byte(1); j <= 5; j++ {
+		s9 = append(s9, j)
+		fmt.Printf("s9(%d): len: %d, cap: %d\n", j, len(s9), cap(s9))
+	}
+	fmt.Println()
+
 }

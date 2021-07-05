@@ -29,7 +29,9 @@ func main() {
 	// 示例1。
 	dog := Dog{"little pig"}
 	fmt.Printf("The dog's name is %q.\n", dog.Name())
+
 	var pet Pet = dog
+	//如果我们使用一个变量给另外一个变量赋值，那么真正赋给后者的，并不是前者持有的那个值，而是该值的一个副本。
 	dog.SetName("monster")
 	fmt.Printf("The dog's name is %q.\n", dog.Name())
 	fmt.Printf("This pet is a %s, the name is %q.\n",

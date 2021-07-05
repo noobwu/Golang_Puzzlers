@@ -4,10 +4,10 @@ import (
 	"fmt"
 )
 
-var container = []string{"zero", "one", "two"}
+var container = []string{"zero", "one", "two"} //数组类型
 
 func main() {
-	container := map[int]string{0: "zero", 1: "one", 2: "two"}
+	container := map[int]string{0: "zero", 1: "one", 2: "two"} //字典类型
 
 	// 方式1。
 	/*
