@@ -41,8 +41,10 @@ func main() {
 	// 示例2。
 	dog1 := Dog{"little pig"}
 	fmt.Printf("The name of first dog is %q.\n", dog1.Name())
+
 	dog2 := dog1
 	fmt.Printf("The name of second dog is %q.\n", dog2.Name())
+	
 	dog1.name = "monster"
 	fmt.Printf("The name of first dog is %q.\n", dog1.Name())
 	fmt.Printf("The name of second dog is %q.\n", dog2.Name())
