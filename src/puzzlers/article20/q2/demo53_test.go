@@ -43,6 +43,7 @@ func TestHello(t *testing.T) {
 
 func TestIntroduce(t *testing.T) {
 	intro := introduce()
+
 	expected := "Welcome to my Golang column."
 	if intro != expected {
 		t.Errorf("The actual introduce %q is not the expected.",
