@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"sync/atomic"
 	"time"
+
+	"golang.org/x/sys/windows"
 )
 
 func main() {
@@ -21,7 +23,7 @@ func main() {
 	for i := uint32(0); i < 10; i++ {
 		go func(i uint32) {
 			fn := func() {
-				fmt.Println(i)
+				fmt.Printf("i:%d,currentThreadId:%d\n", i, windows.GetCurrentThreadId())
 			}
 			trigger(i, fn)
 		}(i)
