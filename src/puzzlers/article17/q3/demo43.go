@@ -5,7 +5,7 @@ import "fmt"
 func main() {
 	// 示例1。
 	//value3 := [...]int8{0, 1, 2, 3, 4, 5, 6}
-	//switch value3[4] { // 这条语句无法编译通过。
+	//switch value3[4] { // 这条语句无法编译通过。case中的值重复了(2,4)
 	//case 0, 1, 2:
 	//	fmt.Println("0 or 1 or 2")
 	//case 2, 3, 4:
@@ -27,7 +27,7 @@ func main() {
 
 	// 示例3。
 	//value6 := interface{}(byte(127))
-	//switch t := value6.(type) { // 这条语句无法编译通过。
+	//switch t := value6.(type) { // 这条语句无法编译通过。case中的值重复了(uint8,byte)
 	//case uint8, uint16:
 	//	fmt.Println("uint8 or uint16")
 	//case byte:
