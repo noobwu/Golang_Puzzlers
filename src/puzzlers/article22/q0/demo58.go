@@ -36,24 +36,28 @@ func main() {
 	// sign 代表信号的通道。
 	sign := make(chan struct{}, max1)
 
+	// 代表启用的goroutine的数量。
 	for i := 1; i <= max1; i++ {
 		go func(id int, writer io.Writer) {
 			defer func() {
 				sign <- struct{}{}
 			}()
+
+			// 代表每个goroutine需要写入的数据块的数量。
 			for j := 1; j <= max2; j++ {
 				// 准备数据。
-				header := fmt.Sprintf("\n[id: %d, iteration: %d]",
-					id, j)
+				header := fmt.Sprintf("\n[id: %d, iteration: %d]", id, j)
 				data := fmt.Sprintf(" %d", id*j)
 				// 写入数据。
 				if protecting > 0 {
-					mu.Lock()
+					mu.Lock() //互斥锁
 				}
 				_, err := writer.Write([]byte(header))
 				if err != nil {
 					log.Printf("error: %s [%d]", err, id)
 				}
+
+				// 代表每个数据块中需要有多少个重复的数字。
 				for k := 0; k < max3; k++ {
 					_, err := writer.Write([]byte(data))
 					if err != nil {
@@ -61,9 +65,10 @@ func main() {
 					}
 				}
 				if protecting > 0 {
-					mu.Unlock()
+					mu.Unlock() //解锁
 				}
 			}
+
 		}(i, &buffer)
 	}
 
